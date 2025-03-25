@@ -1,0 +1,6 @@
+### teste com token 
+GET http://localhost:8080/teste
+API_KEY:123
+
+### teste por ip
+GET http://localhost:8080/teste
