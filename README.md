@@ -44,27 +44,27 @@ O servidor web deve responder na porta 8080.
 
 | Nome  | Definição |
 | ------------- | ------------- |
-| `QUANTIDADE_REQUESTS_POR_TOKEN`  | Informar a quantidade de requeisições que serão permitidas por segundos quando informado token **"API_KEY"** |
-| `QUANTIDADE_REQUESTS_POR_IP`  | Informar a quantidade de requeisições que serão permitidas por segundos por **IP**  |
+| `QUANTIDADE_REQUESTS_POR_TOKEN`  | Informar a quantidade de requisições que serão permitidas por segundos quando informado token **"API_KEY"** |
+| `QUANTIDADE_REQUESTS_POR_IP`  | Informar a quantidade de requisições que serão permitidas por segundos por **IP**  |
 | `TEMPO_BLOQUEIO`  | Informar quantidade de **segundos** de bloqueio das requisições, esse parâmetro será utilizado para bloquear as demais request quando for atingido o limite, após excedido o tempo de bloqueio as requests serão liberadas.     |
 | `REDIS_ADDR`  | Contem a string de conexão com o Redis  |
 
-2 . Executar o comando abaixo para subir os containers 
+2 . Executar o comando abaixo para subir os containers, comando deve ser executado na raiz do projeto onde está o arquivo docker-compose.yml
 
 ```
 docker compose up -d 
 ```
 
 Esse commando irá subir 3 containers : 
-1 - Api -> É a api que implenta o Ratelimit 
-2 - Redis -> Banco Redis
-3 - rediscommander -> uma interface para conseguir visualizar as informações salvas no banco
+- Api -> É a api que implenta o Ratelimit 
+- Redis -> Banco Redis
+- rediscommander -> uma interface para conseguir visualizar as informações salvas no banco
 
 3 . Executar as requições do arquivo http pasta **api/teste.http** nele há duas rotas, uma faz uma request get contendo o header API_KEY é o outro sem o header. Com isso é possuível simular o teste de bloqueio quando atigir o limite de requests.
 
 ## Executar o Arquivo de Test GO
 <b>Obs:</b> : Necessário parar os containers criados na etapa anterior.
-1 . Executar o comando abaixo para subir os containers para teste, é usado o arquivo docker-compose de test
+1 . Executar o comando abaixo para subir os containers para teste, é usado o arquivo docker-compose de test, comando deve ser executado na raiz do projeto onde está o arquivo docker-compose.test.yml
 ```
 docker compose -f docker-compose.test.yml up -d
 ```
